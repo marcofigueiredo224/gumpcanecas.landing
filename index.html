@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gump Canecas — Personalizadas</title>
+  <meta name="description" content="Landing page da Gump Canecas: escolha uma caneca e finalize seu pedido pelo WhatsApp."/>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="#">
+        <img class="logo" src="./assets/logo.png" alt="Gump Canecas" />
+      </a>
+
+      <nav class="nav">
+        <a href="#produtos">Canecas</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#duvidas">Dúvidas</a>
+      </nav>
+
+      <div class="topbar__actions">
+        <button class="icon-btn" id="cartOpen" aria-label="Abrir carrinho" title="Carrinho">
+          🛒 <span class="badge" id="cartCount">0</span>
+        </button>
+        <a class="btn btn--ghost" id="btnWhatsHeader" href="#" rel="noopener">Falar no WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero__grid">
+        <div>
+          <span class="pill">Personalizadas • Entrega rápida • Presente perfeito</span>
+          <h1>Escolha sua caneca e finalize pelo WhatsApp ☕</h1>
+          <p class="muted">
+            Modelos prontos e personalizados com nome, frase, foto, datas e temas.
+            Clique em uma caneca para adicionar ao carrinho e finalizar o pedido.
+          </p>
+
+          <div class="hero__cta">
+            <a class="btn" href="#produtos">Ver canecas</a>
+            <button class="btn btn--ghost" id="btnBudget">Pedir orçamento</button>
+          </div>
+
+          <div class="note">
+            <strong>Dica:</strong> no carrinho, você pode escrever as observações (ex.: nome que vai na caneca).
+          </div>
+        </div>
+
+        <div class="hero__card">
+          <h3>Como você recebe</h3>
+          <ul class="checklist">
+            <li>Escolhe as canecas</li>
+            <li>Escreve a personalização</li>
+            <li>Envia no WhatsApp</li>
+            <li>Confirmamos artes e pagamento</li>
+          </ul>
+
+          <div class="hero__mini">
+            <label class="label">Seu nome (opcional)</label>
+            <input class="input" id="customerName" placeholder="Ex.: Marco" />
+            <label class="label">Observações gerais (opcional)</label>
+            <textarea class="input" id="customerObs" rows="4" placeholder="Ex.: Quero com a frase '...' e fundo roxo"></textarea>
+          </div>
+
+          <button class="btn btn--full" id="btnOpenCartFromHero">Abrir carrinho</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="produtos" class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Canecas disponíveis</h2>
+          <div class="filters">
+            <input class="input input--small" id="search" placeholder="Buscar (ex.: foto, nome, time)"/>
+            <select class="input input--small" id="sort">
+              <option value="featured">Ordenar: destaque</option>
+              <option value="price-asc">Preço: menor</option>
+              <option value="price-desc">Preço: maior</option>
+              <option value="name-asc">Nome: A–Z</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid" id="productGrid"></div>
+      </div>
+    </section>
+
+    <section id="como-funciona" class="section section--alt">
+      <div class="container">
+        <h2>Como funciona</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step__num">1</div>
+            <div>
+              <h3>Escolha</h3>
+              <p class="muted">Adicione as canecas ao carrinho.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step__num">2</div>
+            <div>
+              <h3>Personalize</h3>
+              <p class="muted">Escreva nome/frase/foto/tema nas observações.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step__num">3</div>
+            <div>
+              <h3>Finalize</h3>
+              <p class="muted">Clique em “Finalizar no WhatsApp” e pronto.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="duvidas" class="section">
+      <div class="container">
+        <h2>Dúvidas rápidas</h2>
+        <div class="faq">
+          <details>
+            <summary>Quanto tempo leva?</summary>
+            <p class="muted">Depende do modelo e da personalização. Pelo WhatsApp eu te passo o prazo certinho.</p>
+          </details>
+          <details>
+            <summary>Posso mandar minha própria arte?</summary>
+            <p class="muted">Sim! Você manda a imagem/ideia no WhatsApp e a gente ajusta.</p>
+          </details>
+          <details>
+            <summary>Tem desconto para kits e empresas?</summary>
+            <p class="muted">Tem sim. Coloca no carrinho e pede orçamento pelo WhatsApp.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div>
+          <strong>Gump Canecas</strong>
+          <p class="muted">Canecas personalizadas • DF</p>
+        </div>
+        <div class="footer__actions">
+          <button class="btn btn--ghost" id="btnWhatsFooter">Chamar no WhatsApp</button>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Cart Drawer -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer__backdrop" id="drawerBackdrop"></div>
+    <aside class="drawer__panel" role="dialog" aria-modal="true" aria-label="Carrinho">
+      <div class="drawer__head">
+        <h3>Seu carrinho</h3>
+        <button class="icon-btn" id="cartClose" aria-label="Fechar carrinho">✕</button>
+      </div>
+
+      <div class="drawer__body">
+        <div id="cartItems" class="cart"></div>
+
+        <div class="cart__notes">
+          <label class="label">Observações do pedido (personalização, cores, etc.)</label>
+          <textarea class="input" id="cartNotes" rows="4" placeholder="Ex.: Caneca com nome 'Mariana', cor roxa, frase '...'. Para caneca com foto, vou enviar no WhatsApp."></textarea>
+        </div>
+
+        <div class="cart__summary">
+          <div class="row">
+            <span class="muted">Subtotal</span>
+            <strong id="subtotal">R$ 0,00</strong>
+          </div>
+          <div class="row">
+            <span class="muted">Entrega</span>
+            <span class="muted">a combinar</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="drawer__footer">
+        <button class="btn btn--ghost" id="clearCart">Limpar</button>
+        <button class="btn btn--full" id="checkoutWhats">Finalizar no WhatsApp</button>
+      </div>
+    </aside>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
